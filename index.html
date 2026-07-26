@@ -21,18 +21,22 @@
   html{scroll-behavior:smooth;}
   body{
     background-color:var(--paper);
-    background-image:
-      linear-gradient(rgba(245,243,236,0.72), rgba(245,243,236,0.72)),
-      url('hero-art.jpg');
-    background-size:auto, cover;
-    background-position:center, center;
-    background-attachment:fixed, fixed;
-    background-repeat:no-repeat, no-repeat;
     color:var(--ink);
     font-family:'Work Sans', sans-serif;
     font-weight:400;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+  }
+  .bg-art{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background-image:
+      linear-gradient(rgba(245,243,236,0.72), rgba(245,243,236,0.72)),
+      url('hero-art.jpg');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
   }
   ::selection{ background:var(--ink); color:var(--paper); }
 
@@ -229,9 +233,6 @@
     .grid{ flex-wrap:wrap; }
     .grid-col{ flex:1 1 calc(50% - 10px); }
   }
-  @media (max-width:800px){
-    body{ background-attachment:scroll, scroll; }
-  }
 
   @media (max-width:560px){
     .grid{ flex-direction:column; }
@@ -329,6 +330,7 @@
 </style>
 </head>
 <body>
+<div class="bg-art"></div>
 
 <nav>
   <div class="name">Evelyn Loza</div>
