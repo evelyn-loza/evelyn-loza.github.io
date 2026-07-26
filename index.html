@@ -6,7 +6,7 @@
 <title>Evelyn Loza — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper: #F5F3EC;
@@ -20,7 +20,14 @@
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--paper);
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(rgba(245,243,236,0.72), rgba(245,243,236,0.72)),
+      url('hero-art.jpg');
+    background-size:auto, cover;
+    background-position:center, center;
+    background-attachment:fixed, fixed;
+    background-repeat:no-repeat, no-repeat;
     color:var(--ink);
     font-family:'Work Sans', sans-serif;
     font-weight:400;
@@ -29,7 +36,7 @@
   }
   ::selection{ background:var(--ink); color:var(--paper); }
 
-  h1,h2,h3{ font-family:'Unbounded', sans-serif; font-weight:700; letter-spacing:-0.02em; }
+  h1,h2,h3{ font-family:'Archivo', sans-serif; font-weight:800; letter-spacing:-0.03em; }
 
   .eyebrow{
     font-family:'JetBrains Mono', monospace;
@@ -64,6 +71,7 @@
     display:flex; flex-direction:column; justify-content:center;
     padding:120px 32px 80px;
     position:relative;
+    overflow:hidden;
   }
   .hero .eyebrow{ margin-bottom:24px; }
   .hero h1{
@@ -221,6 +229,10 @@
     .grid{ flex-wrap:wrap; }
     .grid-col{ flex:1 1 calc(50% - 10px); }
   }
+  @media (max-width:800px){
+    body{ background-attachment:scroll, scroll; }
+  }
+
   @media (max-width:560px){
     .grid{ flex-direction:column; }
     .grid-col{ width:100%; }
@@ -275,11 +287,19 @@
   }
   .contact-links{
     margin-top:56px;
-    display:flex; flex-wrap:wrap; gap:14px 40px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:13px; letter-spacing:0.05em; text-transform:uppercase;
+    display:flex; flex-wrap:wrap; gap:16px;
   }
-  .contact-links a{ text-decoration:none; border-bottom:1px solid rgba(245,243,236,0.3); padding-bottom:2px; }
+  .contact-links a{
+    display:flex; align-items:center; justify-content:center;
+    width:52px; height:52px;
+    border:1.5px solid rgba(245,243,236,0.35);
+    border-radius:50%;
+    color:var(--paper);
+    text-decoration:none;
+    transition:background .2s, color .2s;
+  }
+  .contact-links a:hover{ background:var(--paper); color:var(--ink); }
+  .contact-links svg{ width:22px; height:22px; }
   .contact-foot{
     margin-top:100px;
     display:flex; justify-content:space-between;
@@ -293,6 +313,18 @@
     .slate{ grid-template-columns:1fr; }
     .slate div{ border-left:none; padding-left:0; border-top:1px solid var(--line); }
     .slate div:first-child{ border-top:none; }
+
+    nav{ padding:16px 20px; font-size:10px; }
+    nav .links{ gap:14px; }
+
+    .bts-caption{ flex-direction:column; align-items:flex-start; gap:8px; left:20px; right:20px; bottom:20px; }
+    .bts-caption h3{ text-align:left; white-space:normal; font-size:18px; }
+
+    .contact h2{ font-size:clamp(36px,12vw,100px); }
+    .contact{ padding:70px 20px 40px; }
+    .contact-foot{ flex-direction:column; gap:6px; margin-top:60px; }
+    .article-row .art-title{ max-width:100%; font-size:17px; }
+    .article-row{ flex-direction:column; align-items:flex-start; gap:6px; }
   }
 </style>
 </head>
@@ -303,17 +335,18 @@
   <div class="links">
     <a href="#trabajo">Trabajo</a>
     <a href="#escritura">Escritura</a>
-    <a href="#bio">Bio</a>
     <a href="#contacto">Contacto</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero">
-  <div class="eyebrow">Portfolio — Publicidad &amp; Contenido</div>
-  <h1>Evelyn<br>Loza.</h1>
-  <div class="role">Publicista Creativa — Contenido &amp; Producción Audiovisual</div>
-  <p class="bio">Publicista creativa apasionada por las ideas, el contenido y la comunicación digital. Transformo conceptos en campañas, piezas audiovisuales y experiencias que fortalecen la presencia de las marcas.</p>
+  <div style="position:relative; z-index:2;">
+    <div class="eyebrow">Portfolio — Publicidad &amp; Contenido</div>
+    <h1>Evelyn<br>Loza.</h1>
+    <div class="role">Publicista Creativa — Contenido &amp; Producción Audiovisual</div>
+    <p class="bio">Publicista creativa apasionada por las ideas, el contenido y la comunicación digital. Transformo conceptos en campañas, piezas audiovisuales y experiencias que fortalecen la presencia de las marcas.</p>
+  </div>
   <div class="scroll-cue"><span class="line"></span> Scroleá para ver mi trabajo</div>
 </header>
 
@@ -492,25 +525,22 @@
   </div>
 </section>
 
-<!-- BIO -->
-<section class="bio-section wrap" id="bio">
-  <div class="bio-grid">
-    <h2>Sobre mí.</h2>
-    <div class="bio-text">
-      <p>Gracias por recorrer mi trabajo.</p>
-      <p>Cada proyecto es una oportunidad para construir algo con identidad, estrategia y creatividad. Si buscás alguien que se involucre en cada detalle del proceso, me encantaría conocer tu marca y crear algo extraordinario juntos.</p>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <footer class="contact" id="contacto">
   <div class="wrap">
+    <p class="eyebrow" style="color:rgba(245,243,236,0.7); margin-bottom:20px;">Gracias por recorrer mi trabajo</p>
     <h2>Trabajemos<br>Juntos.</h2>
+    <p style="max-width:520px; margin-top:24px; font-size:17px; line-height:1.6; color:rgba(245,243,236,0.75);">Cada proyecto es una oportunidad para construir algo con identidad, estrategia y creatividad. Si buscás alguien que se involucre en cada detalle del proceso, me encantaría conocer tu marca y crear algo extraordinario juntos.</p>
     <div class="contact-links">
-      <a href="mailto:lozaevelyn01@hotmail.com">lozaevelyn01@hotmail.com</a>
-      <a href="https://wa.me/5491166882744" target="_blank" rel="noopener">+54 9 11 6688-2744</a>
-      <a href="https://www.linkedin.com/search/results/people/?keywords=Evelyn%20Loza" target="_blank" rel="noopener">LinkedIn — Evelyn Loza</a>
+      <a href="mailto:lozaevelyn01@hotmail.com" aria-label="Mail" title="lozaevelyn01@hotmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
+      </a>
+      <a href="https://wa.me/5491166882744" target="_blank" rel="noopener" aria-label="WhatsApp" title="+54 9 11 6688-2744">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.01 2C6.48 2 2 6.48 2 12c0 1.77.46 3.45 1.27 4.9L2 22l5.25-1.24A9.96 9.96 0 0 0 12.01 22C17.53 22 22 17.52 22 12S17.53 2 12.01 2Zm0 18.2c-1.6 0-3.13-.43-4.46-1.24l-.32-.19-3.11.74.74-3.02-.2-.33A8.17 8.17 0 0 1 3.8 12c0-4.53 3.68-8.2 8.21-8.2 4.52 0 8.2 3.67 8.2 8.2 0 4.53-3.68 8.2-8.2 8.2Zm4.5-6.13c-.25-.12-1.45-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.24-.64.8-.78.97-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.46-1.37-1.7-.14-.24-.02-.37.11-.5.11-.11.25-.29.37-.43.12-.14.16-.24.24-.4.08-.16.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.24-.86.84-.86 2.05s.88 2.38 1 2.55c.12.16 1.73 2.64 4.2 3.7.59.25 1.05.4 1.4.51.59.19 1.13.16 1.55.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28Z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/evelyn-loza-827089239" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn — Evelyn Loza">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7.5 10.5v6M7.5 7.5v.01M11.5 16.5v-4c0-1.1.9-2 2-2s2 .9 2 2v4M11.5 12.5v4"/></svg>
+      </a>
     </div>
     <div class="contact-foot">
       <span>Evelyn Loza © 2026</span>
